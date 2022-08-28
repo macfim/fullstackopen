@@ -2,11 +2,11 @@ import React from 'react';
 
 import Person from './Person';
 
-const Persons = ({persons}) => {
+const Persons = ({persons, deletePerson}) => {
   return (
     <div>
       {
-        persons.map(item => <Person key={Math.random()} info={item}/>)
+        persons.map(item => <Person key={Math.random()} info={item} deletePerson={deletePerson}/>)
       }
     </div>
   );
