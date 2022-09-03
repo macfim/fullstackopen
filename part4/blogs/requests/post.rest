@@ -1,0 +1,37 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvbmFsZCIsImlkIjoiNjMxMjZhYjlhODYzNzY5MTM5ZWI0MDE1IiwiaWF0IjoxNjYyMTUxNDQ5fQ.KDo3hEhC8vVHBhDGQ2dfzlySeuNWMARx8dAFoIY_r6Q
+
+{
+  "title": "TheFaceduck",
+  "author": "donald duck",
+  "url": "unknown",
+  "likes": 96,
+  "userId": "63126ab9a863769139eb4015",
+}
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "donald",
+  "name": "donald",
+  "password": "donald"
+}
+
+//63126ab9a863769139eb4015
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adsf",
+  "password": "adf"
+}
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvbmFsZCIsImlkIjoiNjMxMjZhYjlhODYzNzY5MTM5ZWI0MDE1IiwiaWF0IjoxNjYyMTUxNDQ5fQ.KDo3hEhC8vVHBhDGQ2dfzlySeuNWMARx8dAFoIY_r6Q
+###
+DELETE http://localhost:3001/api/blogs/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvbmFsZCIsImlkIjoiNjMxMjZhYjlhODYzNzY5MTM5ZWI0MDE1IiwiaWF0IjoxNjYyMTUxNDQ5fQ.KDo3hEhC8vVHBhDGQ2dfzlySeuNWMARx8dAFoIY_r6Q
+
