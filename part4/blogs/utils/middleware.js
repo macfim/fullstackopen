@@ -14,11 +14,11 @@ const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
-const getTokenFrom = request => {  
-  const authorization = request.get('authorization')  ;
-  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {    
-    return authorization.substring(7)  ;
-  }  
+const getTokenFrom = request => {
+  const authorization = request.get('authorization');
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7);
+  }
   return null;
 }
 
@@ -30,11 +30,12 @@ const tokenExtract = (request, response, next) => {
 
 const userExtract = (request, response, next) => {
   const token = getTokenFrom(request);
-  if (!token) return;
+  if (token !== null) {
 
-  const decodedToken = jwt.verify(token, process.env.SECRET);
-  request.user = decodedToken;
-  next();
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    request.user = decodedToken;
+  }
+  next()
 }
 
 const errorHandler = (error, request, response, next) => {
