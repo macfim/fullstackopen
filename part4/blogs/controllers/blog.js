@@ -85,6 +85,22 @@ blogRouter.put('/:id', async (request, response) => {
 
   const id = request.params.id;
   const body = request.body;
+  const token = request.token;
+
+  if (!token) return response.status(401).json({
+    error: 'invalid token'
+  })
+
+  const decodedToken = jwt.verify(token, process.env.SECRET);
+
+  const user = await User.findById(decodedToken.id);
+  const blog = await Blog.findById(id);
+
+  if (!(user.id.toString() === blog.user.toString()))
+    return response.status(401).response({
+      error: 'unauthorized user'
+    })
+  ; 
 
   const res = await Blog.findByIdAndUpdate(id, body, { new: true });
   response.json(res);
